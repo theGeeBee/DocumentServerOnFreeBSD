@@ -17,6 +17,7 @@
 
 ### Settings for openSSL
 ###
+HOST_NAME="docserver.my.domain"
 COUNTRY_CODE="XW" # Example: US/UK/CA/AU/DE, etc.
 TIME_ZONE="UTC" # See: https://www.php.net/manual/en/timezones.php
 

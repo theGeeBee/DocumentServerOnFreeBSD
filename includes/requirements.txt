@@ -1,7 +1,8 @@
 sudo
-gnupg
+curl
 git
+gnupg
 nano
 vim
-postgresql13-server
 onlyoffice-documentserver
+postgresql13-server
