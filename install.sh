@@ -106,9 +106,9 @@ rabbitmqctl --erlang-cookie `cat /var/db/rabbitmq/.erlang.cookie` set_permission
 ### Create self-signed SSL certificate
 ###
 SSL_DIRECTORY="/usr/local/etc/onlyoffice/documentserver/nginx/ssl/"
-mkdir ${SSL_DIRECTORY}
+mkdir -p "${SSL_DIRECTORY}"
 OPENSSL_REQUEST="/C=${COUNTRY_CODE}/CN=${HOST_NAME}"
-openssl req -x509 -nodes -days 3652 -sha512 -subj $OPENSSL_REQUEST -newkey rsa:2048 -keyout ${SSL_DIRECTORY}docserver.key -out ${SSL_DIRECTORY}/server.crt
+openssl req -x509 -nodes -days 3652 -sha512 -subj ${OPENSSL_REQUEST} -newkey rsa:2048 -keyout ${SSL_DIRECTORY}/docserver.key -out ${SSL_DIRECTORY}/server.crt
 
 ### Configure NGINX
 ###
