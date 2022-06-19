@@ -1,0 +1,7 @@
+sudo
+gnupg
+git
+nano
+vim
+onlyoffice-documentserver
+postgresql13-server
