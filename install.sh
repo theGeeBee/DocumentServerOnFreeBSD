@@ -5,7 +5,7 @@
 # Tested on:
 # ----------
 # 1. FreeBSD 13.1
-# Last update: 2022-08-31
+# Last update: 2022-09-01
 # https://github.com/theGeeBee/DocumentServerOnFreeBSD
 ###
 
@@ -26,8 +26,8 @@ OPENSSL_REQUEST="/C=${COUNTRY_CODE}/CN=${HOST_NAME}"
 
 ### RabbitMQ settings
 ###
-RMQ_USERNAME="guest"
-RMQ_PASSWORD="guest"
+RMQ_USERNAME="onlyoffice"
+RMQ_PASSWORD="onlyoffice"
 
 ### PostgreSQL setttings
 ###
@@ -77,7 +77,7 @@ pkg upgrade -y
 
 ### Install required packages
 ###
-xargs pkg install -y < "${PWD}"/include/requirements.txt
+xargs pkg install -y < "${PWD}"/includes/requirements.txt
 
 ### Enable services
 ###
@@ -100,7 +100,7 @@ psql -hlocalhost -U"${PG_USERNAME}" -d "${PG_NAME}" -f /usr/local/www/onlyoffice
 
 rabbitmqctl --erlang-cookie "$(cat /var/db/rabbitmq/.erlang.cookie)" add_user "${RMQ_USERNAME}" "${RMQ_PASSWORD}"
 rabbitmqctl --erlang-cookie "$(cat /var/db/rabbitmq/.erlang.cookie)" set_user_tags "${RMQ_USERNAME}" administrator
-rabbitmqctl --erlang-cookie "$(cat /var/db/rabbitmq/.erlang.cookie)" set_permissions -p / onlyoffice ".*" ".*" ".*"
+rabbitmqctl --erlang-cookie "$(cat /var/db/rabbitmq/.erlang.cookie)" set_permissions -p / "${RMQ_USERNAME}" ".*" ".*" ".*"
   
 ### Create self-signed SSL certificate
 ###
